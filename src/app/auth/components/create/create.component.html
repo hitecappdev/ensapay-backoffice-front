@@ -1,0 +1,162 @@
+<div class="card">
+
+    <div class="card-header">
+       <b>Informations personnelles</b> 
+    </div>
+
+    <form class="card-body">
+        
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputNom4">Nom *</label>
+                <input              
+                type="text" 
+                class="form-control" 
+                id="inputNom4"
+                ngModel
+                name="inputNom"
+                #inputNom="ngModel"  
+                minlength="6"
+                maxlength="10"
+                required
+                > 
+                <div class="alert alert-danger" *ngIf="inputNom.touched &&!inputNom.valid">
+                    <div  *ngIf="inputNom?.errors?.['required']">Enter Votre nom!</div>
+                    <div *ngIf="inputNom?.errors?.['minlength']">nom est moin de 6 caracteres!</div>
+
+                </div>       
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPrenom4">Prenom *</label>
+                <input 
+                required
+                type="text" 
+                class="form-control" 
+                id="inputPrenom4">
+            </div>
+        </div>
+
+
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputId">Pièce d'identité *</label>
+                <select 
+                required 
+                id="inputId" 
+                class="form-control">
+                    <option selected>C.I.N</option>
+                    <option>Passport</option>
+                    <option>Autre</option>
+                </select>
+            </div>
+           
+            <div class="form-group col-md-6">
+                <label for="inputPrenom4">Nº pièce d'identité *</label>
+                <input 
+                required
+                type="text" 
+                class="form-control" 
+                id="inputPrenom4">
+            </div>
+        </div>
+
+
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputDateDeNaissance4">Date de naissance</label>
+                <input type="date" class="form-control" id="inputDateDeNaissance4">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputAdress4">Adress *</label>
+                <input
+                required 
+                type="text" 
+                class="form-control" 
+                id="inputAdress4">
+            </div>
+        </div>
+
+
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Email *</label>
+                <input 
+                required 
+                type="email" 
+                class="form-control" 
+                id="inputEmail4" >
+            </div>
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">Confirmation Email *</label>
+            <input 
+            required
+            type="email" 
+            class="form-control" 
+            id="inputConfirmationEmail4" >
+        </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputDateDeNaissance4">Numéro de téléphone *</label>
+                <input 
+                required
+                type="phone" 
+                class="form-control" 
+                id="inputDateDeNaissance4">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputAdress4">Numéro d'immatriculation au registre de commerce *</label>
+                <input 
+                required
+                type="text" 
+                class="form-control" 
+                id="inputAdress4">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputDateDeNaissance4">Nº de patente *</label>
+                <input 
+                required
+                type="text" 
+                class="form-control" 
+                id="inputDateDeNaissance4">
+            </div>
+            
+        </div>
+
+        <div class="card-header">
+            <b>Pièce jointes</b>
+        </div>
+
+
+        <div class="form-row">
+            <div class="form-group form-inline p-2" *ngFor="let obj of fichierArray; let i=index">
+                
+                <label for="descriptionFichier" class="form-label p-2">Description</label>
+                <input class="form-control " id="descriptionFichier" name="desc{{i}}" type="text"  />
+
+                <label for="pieceJointe" class="form-label p-2">Fichier</label>
+                <input class="form-control  " id="pieceJointe"  name="fichier{{i}}" type="file"  />
+
+            </div>
+            
+        <span (click)="addNewFichier()" class="btn addButt"><i class="fa fa-plus "></i></span>
+        </div>
+
+      
+
+        
+        <button type="submit" class="btn btn-primary"> Enregistrer</button>
+    </form>
+
+   
+
+
+</div>

@@ -1,0 +1,15 @@
+.addButt {
+  background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; 
+  height:40px;
+  /* White text */
+  margin: 8px 10px;/* Some margin */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.addButt:hover {
+  background-color: RoyalBlue;
+}
