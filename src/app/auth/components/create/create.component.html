@@ -4,7 +4,10 @@
        <b>Informations personnelles</b> 
     </div>
 
-    <form class="card-body">
+    <form 
+      #agentProfile="ngForm" 
+      (ngSubmit)="onSubmit(agentProfile.value)" 
+      class="card-body">
         
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -13,17 +16,22 @@
                 type="text" 
                 class="form-control" 
                 id="inputNom4"
-                ngModel
-                name="inputNom"
-                #inputNom="ngModel"  
-                minlength="6"
-                maxlength="10"
                 required
+                ngModel
+                name="surname"                            
+                #surname="ngModel"  
+                minlength="3"
+                maxlength="25"
                 > 
-                <div class="alert alert-danger" *ngIf="inputNom.touched &&!inputNom.valid">
-                    <div  *ngIf="inputNom?.errors?.['required']">Enter Votre nom!</div>
-                    <div *ngIf="inputNom?.errors?.['minlength']">nom est moin de 6 caracteres!</div>
-
+                <div 
+                    class="alert alert-danger" 
+                    *ngIf="surname.touched &&!surname.valid">
+                        <div  *ngIf="surname?.errors?.['required']">
+                            enter Votre nom!
+                        </div>
+                        <div *ngIf="surname?.errors?.['minlength']">
+                            nom est moin de 3 caracteres!
+                        </div>
                 </div>       
             </div>
             <div class="form-group col-md-6">
@@ -32,7 +40,23 @@
                 required
                 type="text" 
                 class="form-control" 
-                id="inputPrenom4">
+                id="inputPrenom4"
+                ngModel
+                name="name"  
+                #name="ngModel"  
+                minlength="3"
+                maxlength="25"
+                /> 
+                <div 
+                    class="alert alert-danger" 
+                    *ngIf="name.touched &&!name.valid">
+                        <div  *ngIf="name?.errors?.['required']">
+                            enter Votre prenom!
+                        </div>
+                        <div *ngIf="name?.errors?.['minlength']">
+                            prenom est moin de 3 caracteres!
+                        </div>
+                </div>       
             </div>
         </div>
 
@@ -40,10 +64,12 @@
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputId">Pièce d'identité *</label>
+                <label for="inputCinType">Pièce d'identité *</label>
                 <select 
                 required 
-                id="inputId" 
+                id="inputCinType" 
+               
+              
                 class="form-control">
                     <option selected>C.I.N</option>
                     <option>Passport</option>
@@ -52,12 +78,23 @@
             </div>
            
             <div class="form-group col-md-6">
-                <label for="inputPrenom4">Nº pièce d'identité *</label>
+                <label for="inputPieceIdentite4">Nº pièce d'identité *</label>
                 <input 
                 required
                 type="text" 
                 class="form-control" 
-                id="inputPrenom4">
+                id="inputPieceIdentite4"
+                ngModel
+                name="cin"  
+                #cinUrl="ngModel"           
+                /> 
+                <div 
+                    class="alert alert-danger" 
+                    *ngIf="cinUrl.touched &&!cinUrl.valid">
+                        <div  *ngIf="cinUrl?.errors?.['required']">
+                            enter le nº pièce d'identité!
+                        </div>
+                </div>       
             </div>
         </div>
 
@@ -65,8 +102,15 @@
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputDateDeNaissance4">Date de naissance</label>
-                <input type="date" class="form-control" id="inputDateDeNaissance4">
+                <label for="inputDateDeNaissance4">Date de naissance *</label>
+                <input 
+                class="form-control" 
+                placeholder="YYYY-MM-DD"
+                ngModel
+                name="birthdate"
+                type="date"    
+                id="inputDateDeNaissance4"
+                required >
             </div>
             <div class="form-group col-md-6">
                 <label for="inputAdress4">Adress *</label>
@@ -74,7 +118,10 @@
                 required 
                 type="text" 
                 class="form-control" 
-                id="inputAdress4">
+                id="inputAdress4"
+                ngModel
+                name="address"
+                >
             </div>
         </div>
 
@@ -87,46 +134,122 @@
                 required 
                 type="email" 
                 class="form-control" 
-                id="inputEmail4" >
+                id="inputEmail4" 
+                ngModel
+                name="email"  
+                #email="ngModel" 
+                email          
+                /> 
+                <div 
+                    class="alert alert-danger" 
+                    *ngIf="email.touched &&!email.valid">
+                        <div  *ngIf="email?.errors?.['required']">
+                            enter votre e-mail!
+                        </div>
+                        <div *ngIf="email?.errors?.['email']">
+                            enter un e-mail valid!
+                        </div>
+                       
+                </div>       
             </div>
-        <div class="form-group col-md-6">
-            <label for="inputEmail4">Confirmation Email *</label>
-            <input 
-            required
-            type="email" 
-            class="form-control" 
-            id="inputConfirmationEmail4" >
+            <div class="form-group col-md-6">
+                <label for="inputConfirmationEmail4">Confirmation Email *</label>
+                <input 
+                required
+                type="email" 
+                class="form-control" 
+                id="inputConfirmationEmail4" 
+                ngModel
+                name="email"  
+                #inputConfirmationEmail="ngModel" 
+                email          
+                /> 
+                <div 
+                    class="alert alert-danger" 
+                    *ngIf="inputConfirmationEmail.touched &&!inputConfirmationEmail.valid">
+                        <div  *ngIf="inputConfirmationEmail?.errors?.['required']">
+                            comfirmer votre e-mail!
+                        </div>
+                        <div *ngIf="inputConfirmationEmail?.errors?.['email']">
+                            enter un e-mail valid!
+                        </div>
+                        <div *ngIf="email?.value != inputConfirmationEmail?.value">
+                            email n'est pas correcte!
+                        </div>
+                </div>      
         </div>
         </div>
 
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputDateDeNaissance4">Numéro de téléphone *</label>
+                <label for="inputPhone4">Numéro de téléphone *</label>
                 <input 
                 required
                 type="phone" 
                 class="form-control" 
-                id="inputDateDeNaissance4">
+                id="inputPhone4"
+                ngModel
+                name="phone"  
+                #phone="ngModel"   
+                pattern='[- +()0-9]+'        
+                /> 
+                <div 
+                    class="alert alert-danger" 
+                    *ngIf="phone.touched &&!phone.valid">
+                        <div  *ngIf="phone?.errors?.['required']">
+                            enter votre numéro de téléphone!
+                        </div>
+                        <div *ngIf="phone?.errors?.['pattern']">
+                            enter un numéro de téléphone valid!
+                        </div>
+                </div>    
             </div>
+            
             <div class="form-group col-md-6">
-                <label for="inputAdress4">Numéro d'immatriculation au registre de commerce *</label>
+                <label for="inputImmatriComm4">Numéro d'immatriculation au registre de commerce *</label>
                 <input 
                 required
                 type="text" 
                 class="form-control" 
-                id="inputAdress4">
+                id="inputImmatriComm4"
+                ngModel
+                name="commerceRegisterImm"  
+                #commerceRegisterImm="ngModel"           
+                /> 
+                <div 
+                    class="alert alert-danger" 
+                    *ngIf="commerceRegisterImm.touched &&!commerceRegisterImm.valid">
+                        <div  *ngIf="commerceRegisterImm?.errors?.['required']">
+                            enter le nº d'immatriculation au registre de commerce!
+                        </div>
+                </div>     
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputDateDeNaissance4">Nº de patente *</label>
+                <label for="inputPatente4">Nº de patente *</label>
                 <input 
                 required
                 type="text" 
                 class="form-control" 
-                id="inputDateDeNaissance4">
+                id="inputPatente4" 
+                ngModel
+                name="patenteNumber"  
+                #patenteNumber="ngModel"   
+                pattern='[- +()0-9]+'        
+                /> 
+                <div 
+                    class="alert alert-danger" 
+                    *ngIf="patenteNumber.touched &&!patenteNumber.valid">
+                        <div  *ngIf="patenteNumber?.errors?.['required']">
+                            enter votre numéro de téléphone!
+                        </div>
+                        <div *ngIf="patenteNumber?.errors?.['pattern']">
+                            enter un numéro de téléphone valid!
+                        </div>
+                </div>    
             </div>
             
         </div>
@@ -137,23 +260,53 @@
 
 
         <div class="form-row">
-            <div class="form-group form-inline p-2" *ngFor="let obj of fichierArray; let i=index">
+            <div class="form-group form-inline p-2" >
                 
-                <label for="descriptionFichier" class="form-label p-2">Description</label>
-                <input class="form-control " id="descriptionFichier" name="desc{{i}}" type="text"  />
+                <label for="description_cin_recto" class="form-label p-2">Description</label>
+                <input class="form-control " id="description_cin_recto"  name="desc_cin_recto" type="text"  />
 
-                <label for="pieceJointe" class="form-label p-2">Fichier</label>
-                <input class="form-control  " id="pieceJointe"  name="fichier{{i}}" type="file"  />
+                <label for="cin_recto" class="form-label p-2">Fichier recto</label>
+                <input 
+                required 
+                class="form-control" 
+                (change)="getRecto($event)" 
+                name="cin_recto" 
+                ngModel 
+                id="cin_recto" 
+                type="file"  />
 
             </div>
+
+            <div class="form-group form-inline p-2">
             
-        <span (click)="addNewFichier()" class="btn addButt"><i class="fa fa-plus "></i></span>
+                <label for="description_cin_verso" class="form-label p-2">Description</label>
+                <input required class="form-control " id="description_cin_verso" name="desc_cin_verso" type="text" />
+            
+                <label for="cin_verso" class="form-label p-2">Fichier verso</label>
+                <input 
+                required 
+                class="form-control" 
+                (change)="getVerso($event)" 
+                name="cin_verso" 
+                ngModel 
+                observeFiles 
+                id="cin_verso"  
+                type="file"  />
+            
+            </div>
+
         </div>
 
       
 
         
-        <button type="submit" class="btn btn-primary"> Enregistrer</button>
+        <button 
+            [disabled]="!agentProfile.form.valid"
+            type="submit" 
+            class="btn btn-primary"
+            >
+            Enregistrer
+        </button>
     </form>
 
    
