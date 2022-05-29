@@ -1,0 +1,55 @@
+<div class="card col-12 col-sm-7 col-md-6 m-auto">
+  <div class="card-body bg-light">
+
+    <h4 class="text-center my-2">Espace Administrateur</h4>
+
+    <form 
+     [formGroup]="loginForm" 
+
+     (ngSubmit)="onSubmit()" 
+     class="bg-white p-3">
+      <div class="mb-3">
+
+        <label for="phoneNumber" class="form-label">Identifiant(N° Telephone)</label>
+
+        <input 
+          formControlName="phoneNumber" 
+          type="text" 
+          class="form-control" 
+          placeholder="Entrer votre identifiant"
+          [ngClass]="{ 'is-invalid': submitted && myForm['phoneNumber'].errors }" />
+
+        <div *ngIf="submitted && myForm['phoneNumber'].errors" class="invalid-feedback">
+
+          <div *ngIf="myForm['phoneNumber'].errors['required']">Entrer un numéro de téléphone</div>
+
+        </div>
+
+      </div>
+
+      <div class="mb-3">
+
+        <label for="password" class="form-label">Mot de passe</label>
+
+        <input 
+          formControlName="password" 
+          type="password" 
+          class="form-control" 
+          placeholder="Entrer votre mot de passe"
+          [ngClass]="{ 'is-invalid': submitted && myForm['password'].errors }" />
+
+        <div *ngIf="submitted && myForm['password'].errors" class="invalid-feedback">
+
+          <div *ngIf="myForm['password'].errors['required']">Entrer un numéro de téléphone</div>
+
+        </div>
+        
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-2 w-100">S'identifier</button>
+
+
+    </form>
+  </div>
+
+</div>

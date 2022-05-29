@@ -1,5 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { fichier } from '../../model/fichier.module';
+import { fichier } from '../../auth/model/fichier.module';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
@@ -30,6 +30,7 @@ export class CreateComponent implements OnInit {
     getVerso(event: any){
       this.verso_cin= <File>event.target.files[0];
     }
+    
 /*name
 surname
 phone

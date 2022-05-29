@@ -2,25 +2,28 @@ import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 
 import { AuthRoutingModule } from './auth-routing.module';
-import { CreateComponent } from './components/create/create.component';
+import { CreateComponent } from '../agent/create/create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
   declarations: [
-    CreateComponent
+    CreateComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
-     FormsModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [
     DatePipe  
   ],
   exports: [
-    CreateComponent
+    CreateComponent,
+    LoginComponent
   ]
 })
 export class AuthModule { }
