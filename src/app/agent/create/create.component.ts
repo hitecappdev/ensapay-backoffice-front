@@ -63,7 +63,7 @@ commerceRegisterImm
     
      console.warn(fd);
     
-    this.http.post('http://localhost:8080/api/account/agent/register',fd)
+    this.http.post('https://ensa-pay-2022.herokuapp.com/api/account/agent/register',fd)
     .subscribe((result)=>{
           console.warn("result",result);
 
