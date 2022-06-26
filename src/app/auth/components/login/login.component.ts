@@ -37,7 +37,7 @@ export class LoginComponent  {
           this.tokenStorage.saveAdmin(data.body.adminProfile);
         },
         error: (e: any) => {
-          console.log("wa ta chsayer dir !! :");
+          console.log("Something not good !! :");
           console.log(e);
         },
         complete: () => {
