@@ -12,7 +12,7 @@ export class AuthService {
   private adminUrl: string;
   
   constructor(private http: HttpClient, private router: Router, private tokenStorage: TokenStorageService) {
-    this.adminUrl = 'http://localhost:8080/api/';
+    this.adminUrl = 'https://ensa-pay-2022.herokuapp.com/api/';
 
   }
   
